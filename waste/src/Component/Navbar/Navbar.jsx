@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import './Navbar.css'
-
 
 const NAV_LINKS = [
   { id: "#home", label: "Home" },
@@ -72,29 +72,28 @@ export default function Navbar() {
       aria-label="Main"
     >
       <div className="nav-left">
-        <a className="logo" href="/" aria-label="Logo">
+        <Link className="logo" to="/" aria-label="Logo">
           Waste ManagmentApp
-        </a>
+        </Link>
 
         <div className="nav-links" role="menubar">
           {NAV_LINKS.map((l) => (
-            <a
-              key={l.id}
-              href={l.id}
+            <Link
+              key={l.path}
+              to={l.path}
               className="nav-item"
               role="menuitem"
-              onClick={(e) => handleNavClick(e, l.id)}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
 
       <div className="nav-right">
-        <a className="cta-btn" href="/login">
+        <Link className="cta-btn" to="/login">
           Login
-        </a>
+        </Link>
 
         <button
           className={`hamburger ${menuOpen ? "is-open" : ""}`}
@@ -108,15 +107,15 @@ export default function Navbar() {
 
       <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`} role="menu" id="mobileMenu">
         {NAV_LINKS.map((l) => (
-          <a
-            key={l.id}
-            href={l.id}
+          <Link
+            key={l.path}
+            to={l.path}
             className="nav-item"
             role="menuitem"
-            onClick={(e) => handleNavClick(e, l.id)}
+            onClick={() => setMenuOpen(false)}
           >
             {l.label}
-          </a>
+          </Link>
         ))}
 
         <div style={{ marginTop: 8 }}>
