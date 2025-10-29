@@ -1,13 +1,21 @@
+// Login Page Component - Developed by Team
+// User authentication interface with form validation
+// Includes remember me and forgot password functionality
+// Created: 2025 | Waste Management App
+
 import React, { useState } from 'react';
 import './Login.css';
 
+// Login component - handles user authentication
 const Login = () => {
+  // Form state management - stores user input
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
 
+  // Handle input changes - updates form state
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({

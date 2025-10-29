@@ -1,21 +1,30 @@
+// Navigation Bar Component - Developed by Team
+// Main navigation with responsive menu and routing
+// Includes mobile hamburger menu with smooth animations
+// Created: 2025 | Waste Management App
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserRound } from "lucide-react";
 import './Navbar.css'
 
+// Navigation links - manually configured routes
 const NAV_LINKS = [
-  { id: "#home", label: "Home" },
-  { id: "#features", label: "Features" },
-  { id: "#solution", label: "Our Solution" },
-  { id: "#pricing", label: "Help" },
-  { id: "#about", label: "About Us" },
+  { path: "/", label: "Home" },
+  { path: "/features", label: "Features" },
+  { path: "/solution", label: "Our Solution" },
+  { path: "/help", label: "Help" },
+  { path: "/about", label: "Contact Us" },
 ];
 
+// Navbar component - responsive navigation with scroll detection
 export default function Navbar() {
+  // State management for menu and scroll behavior
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
 
-  // Detect scroll to toggle .scrolled class
+  // Detect scroll to toggle .scrolled class - improves UX
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -53,16 +62,7 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const handleNavClick = (e, hash) => {
-    e.preventDefault();
-    const el = document.querySelector(hash);
-    if (el) {
-      const navHeight = (navRef.current && navRef.current.offsetHeight) || 68;
-      const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-    setMenuOpen(false);
-  };
+  // reserved for anchor-based smooth scroll if needed in the future
 
   return (
     <nav
@@ -94,6 +94,10 @@ export default function Navbar() {
         <Link className="cta-btn" to="/login">
           Login
         </Link>
+        <Link className="profile-btn" to="/profile" aria-label="Profile">
+          <UserRound size={18} />
+          <span>Profile</span>
+        </Link>
 
         <button
           className={`hamburger ${menuOpen ? "is-open" : ""}`}
@@ -119,15 +123,26 @@ export default function Navbar() {
         ))}
 
         <div style={{ marginTop: 8 }}>
-          <a
+          <Link
             className="cta-btn"
-            href="/login"
+            to="/login"
             onClick={() => {
               setMenuOpen(false);
             }}
           >
             Login
-          </a>
+          </Link>
+          <Link
+            className="profile-btn"
+            to="/profile"
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+            style={{ marginTop: 8, width: '100%', justifyContent: 'center' }}
+          >
+            <UserRound size={18} />
+            <span>Profile</span>
+          </Link>
         </div>
       </div>
     </nav>

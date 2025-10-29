@@ -153,6 +153,28 @@ html { scroll-behavior: smooth; }
   outline: none;
 }
 
+/* Secondary Profile button */
+.profile-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  padding:0.5rem 0.9rem;
+  border-radius:12px;
+  font-weight:700;
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  text-decoration:none;
+  transition: transform var(--trans-fast) ease, background-color var(--trans-fast) ease, box-shadow var(--trans-fast) ease;
+}
+.profile-btn:hover,
+.profile-btn:focus{
+  transform: translateY(-4px) scale(1.01);
+  background: linear-gradient(90deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08));
+  box-shadow: 0 12px 28px rgba(2,6,23,0.18);
+  outline: none;
+}
+
 /* ========== HAMBURGER ========== */
 .hamburger{
   display:none;
@@ -251,6 +273,7 @@ html { scroll-behavior: smooth; }
   .nav-links{ display:none; }
   .hamburger{ display:inline-flex; }
   .cta-btn{ display:none; } /* CTA inside mobile menu */
+  .profile-btn{ display:none; } /* use mobile menu entry */
 }
 
 /* ========== DARK MODE ========== */

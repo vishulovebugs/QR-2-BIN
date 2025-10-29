@@ -1,10 +1,27 @@
+// Home Page Component - Developed by Team
+// Main landing page with features and footer
+// Created: 2025 | Waste Management App
+
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Youtube,
+  Mail,
+  MapPin,
+  Phone
+} from 'lucide-react';
 import './Home.css';
 
+// Homepage component - handles navigation and displays key features
 export default function Homepage() {
+  const navigate = useNavigate();
   return (
     <div className="page-wrapper">
-      {/* Hero Section */}
+      {/* Hero Section - Main headline and value proposition */}
       <section className="hero-section">
         <h1 className="hero-title">
           All-in-one solution for efficient
@@ -85,7 +102,7 @@ export default function Homepage() {
             Instant alerts & notifications, smart control room dashboards
           </p>
 
-          <button className="price-btn">See Price</button>
+          <button className="price-btn" onClick={() => navigate('/profile')}>Get Started</button>
         </div>
       </section>
 
@@ -100,17 +117,80 @@ export default function Homepage() {
       </section>
 
       {/* Chat Button */}
-      <button className="chat-button">
+      <button className="chat-button" onClick={() => navigate('/profile')}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L2 22l5.71-.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
         </svg>
         Let's Chat
       </button>
+
+      {/* Footer */}
+      <footer className="home-footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3 className="footer-logo">Waste Management App</h3>
+            <p className="footer-tagline">
+              Connecting communities for a cleaner, greener future
+            </p>
+          </div>
+
+          <div className="footer-section">
+            <h4 className="footer-heading">Contact Us</h4>
+            <div className="footer-contact">
+              <div className="contact-item-footer">
+                <MapPin size={16} />
+                <span>Delhi, India</span>
+              </div>
+              <div className="contact-item-footer">
+                <Phone size={16} />
+                <span>+91 99232XXXXX</span>
+              </div>
+              <div className="contact-item-footer">
+                <Mail size={16} />
+                <span>support@wasteapp.com</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <h4 className="footer-heading">Follow Us</h4>
+            <div className="social-icons">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon facebook" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter" aria-label="Twitter">
+                <Twitter size={20} />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram" aria-label="Instagram">
+                <Instagram size={20} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon linkedin" aria-label="LinkedIn">
+                <Linkedin size={20} />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon youtube" aria-label="YouTube">
+                <Youtube size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p className="copyright">
+            © 2025 Waste Management App. All rights reserved.
+          </p>
+          <div className="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <span className="divider">•</span>
+            <a href="/terms">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
 
-// Feature Card Component
+// Feature Card Component - Reusable card for displaying features
+// Props: icon, title, variant (styling)
 function FeatureCard({ icon, title, variant }) {
   return (
     <div className={`feature-card ${variant}`}>
@@ -120,7 +200,8 @@ function FeatureCard({ icon, title, variant }) {
   );
 }
 
-// Solution Card Component
+// Solution Card Component - Displays solution features with gradients
+// Props: icon, title, gradient (color scheme)
 function SolutionCard({ icon, title, gradient }) {
   return (
     <div className="solution-card">
